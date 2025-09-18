@@ -159,10 +159,11 @@ class WhichKeyMenu extends BaseWhichKeyMenu<BindingItem> {
                 0
             );
             const items = result.bindings;
+            // Only apply delay for the initial menu, instant for submenus
             return {
                 items,
                 title: item.name,
-                delay: this.delay,
+                delay: 0,
                 showMenu: true,
                 buttons: WhichKeyMenu.NonRootMenuButtons,
             };
@@ -242,7 +243,7 @@ export function showWhichKeyMenu(
     menu.update({
         items: config.bindings,
         title: config.title,
-        delay: config.delay,
+        delay: config.delay, // Only initial menu gets the delay
         showMenu: true,
         buttons: [WhichKeyMenu.SearchBindingButton],
     });
